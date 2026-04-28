@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Mini CRM — Dark Glassmorphism with Neon Violet + Cyan */
+
+@layer base {
+  :root {
+    --background: 240 30% 6%;
+    --foreground: 220 30% 96%;
+
+    --card: 240 25% 10%;
+    --card-foreground: 220 30% 96%;
+
+    --popover: 240 30% 8%;
+    --popover-foreground: 220 30% 96%;
+
+    --primary: 270 95% 65%;
+    --primary-foreground: 240 30% 6%;
+    --primary-glow: 270 100% 75%;
+
+    --secondary: 190 95% 55%;
+    --secondary-foreground: 240 30% 6%;
+    --secondary-glow: 190 100% 70%;
+
+    --muted: 240 20% 14%;
+    --muted-foreground: 220 15% 65%;
+
+    --accent: 190 95% 55%;
+    --accent-foreground: 240 30% 6%;
+
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 220 30% 96%;
+
+    --success: 145 75% 50%;
+    --warning: 40 95% 60%;
+    --info: 210 95% 60%;
+
+    --border: 260 30% 22%;
+    --input: 240 25% 14%;
+    --ring: 270 95% 65%;
+
+    --radius: 0.9rem;
+
+    /* Glass surfaces */
+    --glass-bg: 240 30% 12% / 0.55;
+    --glass-border: 270 60% 60% / 0.25;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(270 95% 65%), hsl(190 95% 55%));
+    --gradient-glow: radial-gradient(circle at 20% 20%, hsl(270 95% 55% / 0.35), transparent 60%),
+                     radial-gradient(circle at 80% 80%, hsl(190 95% 50% / 0.30), transparent 60%);
+    --gradient-card: linear-gradient(135deg, hsl(240 30% 14% / 0.7), hsl(260 30% 10% / 0.5));
+
+    /* Shadows / glows */
+    --shadow-neon-violet: 0 0 24px hsl(270 100% 65% / 0.45), 0 0 48px hsl(270 100% 60% / 0.25);
+    --shadow-neon-cyan: 0 0 24px hsl(190 100% 60% / 0.45), 0 0 48px hsl(190 100% 55% / 0.25);
+    --shadow-elegant: 0 10px 40px -10px hsl(270 100% 50% / 0.4);
+
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 240 30% 8%;
+    --sidebar-foreground: 220 20% 90%;
+    --sidebar-primary: 270 95% 65%;
+    --sidebar-primary-foreground: 240 30% 6%;
+    --sidebar-accent: 240 25% 14%;
+    --sidebar-accent-foreground: 220 30% 96%;
+    --sidebar-border: 260 30% 20%;
+    --sidebar-ring: 270 95% 65%;
+  }
+
+  .dark {
+    /* same — app is dark by default */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body, #root {
+    @apply min-h-screen;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-image: var(--gradient-glow);
+    background-attachment: fixed;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  .glass {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid hsl(var(--glass-border));
+  }
+
+  .glass-card {
+    @apply glass rounded-2xl;
+    background-image: var(--gradient-card);
+    box-shadow: 0 8px 32px -8px hsl(270 50% 5% / 0.6);
+  }
+
+  .neon-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .neon-violet {
+    box-shadow: var(--shadow-neon-violet);
+  }
+  .neon-cyan {
+    box-shadow: var(--shadow-neon-cyan);
+  }
+
+  .glow-ring {
+    @apply transition-all duration-300;
+  }
+  .glow-ring:hover {
+    box-shadow: var(--shadow-neon-violet);
+    border-color: hsl(var(--primary) / 0.6);
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.4);
+    border-radius: 999px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+}
